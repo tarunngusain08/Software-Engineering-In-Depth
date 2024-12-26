@@ -49,3 +49,18 @@ Docker simplifies application deployment by packaging code, dependencies, and ru
 
 ### Removing Postgres Image and the container
 <img width="1051" alt="Screenshot 2024-12-26 at 8 56 03 PM" src="https://github.com/user-attachments/assets/1cbf536b-c919-41d5-8244-396e7385ee0f" />
+
+---
+
+### Running Mysql Image
+<img width="978" alt="Screenshot 2024-12-26 at 9 04 31 PM" src="https://github.com/user-attachments/assets/31f0751b-6087-442a-8a0b-7ab368afd2f1" />
+
+<img width="586" alt="Screenshot 2024-12-26 at 9 04 43 PM" src="https://github.com/user-attachments/assets/2bede068-4d94-4a51-8127-ca0f10b3a846" />
+
+---
+
+### Inspecting containers and Network
+<img width="1265" alt="Screenshot 2024-12-26 at 9 05 57 PM" src="https://github.com/user-attachments/assets/733eca19-c8a2-4bfd-8268-b7d1ade8a3ce" />
+
+<img width="698" alt="Screenshot 2024-12-26 at 9 07 23 PM" src="https://github.com/user-attachments/assets/b926255c-6a05-4342-bb54-c7597cd25d4e" />
+
