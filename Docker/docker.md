@@ -1,4 +1,4 @@
-# Docker
+<img width="1051" alt="Screenshot 2024-12-26 at 8 56 03 PM" src="https://github.com/user-attachments/assets/92928c3d-4ecf-4816-b8c1-2710680ddbb8" /># Docker
 
 Docker simplifies application deployment by packaging code, dependencies, and runtime into containers, ensuring consistency across environments. Here's what you need to know:
 
@@ -35,3 +35,4 @@ Docker simplifies application deployment by packaging code, dependencies, and ru
 - Remove unused images: `docker image prune`
 - Remove all unused resources: `docker system prune -a`
 
+<img width="1051" alt="Screenshot 2024-12-26 at 8 56 03 PM" src="https://github.com/user-attachments/assets/1cbf536b-c919-41d5-8244-396e7385ee0f" />
