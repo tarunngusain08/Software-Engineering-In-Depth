@@ -1,4 +1,4 @@
-#Docker
+# Docker
 
 Docker simplifies application deployment by packaging code, dependencies, and runtime into containers, ensuring consistency across environments. Here's what you need to know:
 
