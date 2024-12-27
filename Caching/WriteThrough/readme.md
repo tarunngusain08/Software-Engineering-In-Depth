@@ -112,4 +112,21 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 
 ## Screenshots
 
-###
+### Fail cases -
+<img width="1512" alt="fail2" src="https://github.com/user-attachments/assets/a027bc9b-ac7a-4d22-9b88-4e9c7c7481f8" />
+<img width="1512" alt="fail1" src="https://github.com/user-attachments/assets/c5718585-add3-4e0d-aa9e-b50b2a435898" />
+
+### Success cases -
+
+<img width="1512" alt="success1" src="https://github.com/user-attachments/assets/ec7b7e73-a832-42db-a2a9-d6041f85ded0" />
+<img width="1512" alt="success2" src="https://github.com/user-attachments/assets/dec6f722-f8c0-4b24-ba7d-a6e20e96b0de" />
+
+### Redis state - 
+<img width="690" alt="redis success" src="https://github.com/user-attachments/assets/cf7d707d-cc92-431d-a9fa-f36088158467" />
+<img width="1512" alt="Redis" src="https://github.com/user-attachments/assets/659c1bb9-d930-4226-b911-f49269b70db5" />
+
+### Mysql state - 
+<img width="576" alt="mysql success" src="https://github.com/user-attachments/assets/5a3a7bb2-7570-4f69-b4fb-e8436756abeb" />
+<img width="1512" alt="mysql" src="https://github.com/user-attachments/assets/88847666-effc-4c78-85c8-29524cd11bbd" />
+
+
