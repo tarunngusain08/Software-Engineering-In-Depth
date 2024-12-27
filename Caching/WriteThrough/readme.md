@@ -63,6 +63,8 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
          occupation VARCHAR(255) NOT NULL
      );
      ```
+<img width="1512" alt="Screenshot 2024-12-27 at 7 32 15 PM" src="https://github.com/user-attachments/assets/5d36a6ea-97b0-4622-99fa-3792de4d9729" />
+
 
 4. **Run the Go application:**
 
@@ -107,3 +109,7 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
     "message": "Data write successful!"
   }
   ```
+
+## Screenshots
+
+###
