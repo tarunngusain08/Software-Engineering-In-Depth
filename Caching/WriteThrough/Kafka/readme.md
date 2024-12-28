@@ -20,6 +20,17 @@ The project consists of the following key components:
 - Upon sending a request via HTTP, the data was pushed to Kafka by the producer, and immediately processed and written to MySQL and Redis by the consumer.
 - The **Confluent Dashboard** showed real-time metrics, and the data was visible in MySQL and Redis immediately.
 
+#### Producer and Consumer
+<img width="500" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" /> <img width="500" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
+
+#### DB and Redis
+<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
+
+#### Producer, Consumer and Consumer Lag Metrics
+<img width="330" alt="Screenshot 2024-12-28 at 3 15 42 PM" src="https://github.com/user-attachments/assets/c83698e3-3aeb-493d-8157-3808d12b9dd1" />
+<img width="330" alt="Screenshot 2024-12-28 at 3 15 49 PM" src="https://github.com/user-attachments/assets/134112fb-0158-4dee-ac80-d9e8c7a9666b" />
+<img width="330" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
+
 ### 2. Automation Script to Send 10 Requests/Second
 - An automation script was written to simulate traffic by sending 10 requests per second to the `write-through` endpoint.
 - The requests were sent using randomly generated data, and each request was directed to the Kafka topic.
@@ -36,6 +47,16 @@ The project consists of the following key components:
 - To test how the system would handle increased traffic, the producer throughput was raised to **1000 requests per second** while keeping the number of consumers at **6**.
 - This change caused a significant increase in lag, with the total lag growing to **150k messages**, and approximately **25k message lag per partition**.
 - The consumer pool was still struggling to keep up with the high message rate, and the lag continued to grow.
+
+#### DB and Redis
+<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
+
+#### Producer, Consumer and Consumer Lag Metrics
+<img width="323" alt="Screenshot 2024-12-28 at 3 26 34 PM" src="https://github.com/user-attachments/assets/49c0e178-775b-4348-8249-802f91f14cb5" />
+<img width="323" alt="Screenshot 2024-12-28 at 3 26 42 PM" src="https://github.com/user-attachments/assets/b68bdffc-e5da-4852-a702-97c5b89cb16d" />
+<img width="327" alt="Screenshot 2024-12-28 at 3 30 50 PM" src="https://github.com/user-attachments/assets/a72c7263-3585-4a0e-9eac-0ab2093ecd69" />
+
+
 
 ### 5. Consumer Processing After Stopping Producer
 - After running the producer at 1000 requests/sec for **4-5 minutes**, the producer was stopped to test how well the consumers could catch up on the backlog.
@@ -206,16 +227,6 @@ You can monitor the system's performance and Kafka metrics on the **Confluent Da
 
 ### With 1 producer and 1 consumer
 
-#### Producer and Consumer
-<img width="500" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" /> <img width="500" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
-
-#### DB and Redis
-<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
-
-#### Producer, Consumer and Consumer Lag Metrics
-<img width="330" alt="Screenshot 2024-12-28 at 3 15 42 PM" src="https://github.com/user-attachments/assets/c83698e3-3aeb-493d-8157-3808d12b9dd1" />
-<img width="330" alt="Screenshot 2024-12-28 at 3 15 49 PM" src="https://github.com/user-attachments/assets/134112fb-0158-4dee-ac80-d9e8c7a9666b" />
-<img width="330" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
 
 
 #### With 1 producer and consumer pool of 6 consumers
