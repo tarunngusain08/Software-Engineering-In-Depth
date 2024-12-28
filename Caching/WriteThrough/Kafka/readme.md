@@ -1,4 +1,4 @@
-# Kafka Write-Through Cache with Consumer Pool and Throughput Testing
+<img width="898" alt="Screenshot 2024-12-28 at 3 37 03 PM" src="https://github.com/user-attachments/assets/ecd2eae5-b117-4308-999f-dde55aa61a03" /># Kafka Write-Through Cache with Consumer Pool and Throughput Testing
 
 This project implements a write-through cache system using Kafka, Redis, and MySQL. The architecture was designed to allow for high throughput while ensuring the data is immediately visible in MySQL, Redis, and metrics on the Confluent Dashboard.
 
@@ -53,13 +53,21 @@ The project consists of the following key components:
 <img width="323" alt="Screenshot 2024-12-28 at 3 26 42 PM" src="https://github.com/user-attachments/assets/b68bdffc-e5da-4852-a702-97c5b89cb16d" />
 <img width="327" alt="Screenshot 2024-12-28 at 3 30 50 PM" src="https://github.com/user-attachments/assets/a72c7263-3585-4a0e-9eac-0ab2093ecd69" />
 
-
-
 ### 5. Consumer Processing After Stopping Producer
 - After running the producer at 1000 requests/sec for **4-5 minutes**, the producer was stopped to test how well the consumers could catch up on the backlog.
 - The **consumer** was allowed to continue consuming messages asynchronously.
 - As expected, the **consumer lag** began to decrease gradually as the consumer slowly processed the pending messages.
 - The lag continued to reduce as more messages were consumed, and the system eventually reached a steady state.
+
+#### Producer, Consumer and Consumer Lag Metrics
+<img width="327" alt="Screenshot 2024-12-28 at 4 05 35 PM" src="https://github.com/user-attachments/assets/7a0509ac-9aa7-4bd3-96fc-9e4910243b07" />
+<img width="332" alt="Screenshot 2024-12-28 at 4 05 40 PM" src="https://github.com/user-attachments/assets/93ec8a1e-202c-4919-80bc-29ae5b893afb" />
+<img width="898" alt="Screenshot 2024-12-28 at 3 37 03 PM" src="https://github.com/user-attachments/assets/56ef2fec-4824-4482-9e8a-a24021672141" />
+
+### 5. Consumer Lag after 30 and 60 mins
+<img width="452" alt="Screenshot 2024-12-28 at 4 05 51 PM" src="https://github.com/user-attachments/assets/fb98590c-c22b-427c-a025-47fe82fde5ee" />
+<img width="456" alt="Screenshot 2024-12-28 at 4 21 20 PM" src="https://github.com/user-attachments/assets/94c7816f-ae1a-46c0-9c83-8496fa9eb1b9" />
+
 
 ## Key Observations
 
@@ -218,12 +226,3 @@ go run main.go
 
 ### 4. Monitor Metrics on Confluent Dashboard
 You can monitor the system's performance and Kafka metrics on the **Confluent Dashboard**.
-
-
-### 5. Screenshots 
-
-### With 1 producer and 1 consumer
-
-
-
-#### With 1 producer and consumer pool of 6 consumers
