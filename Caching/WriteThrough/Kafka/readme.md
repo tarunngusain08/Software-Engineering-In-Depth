@@ -1,4 +1,4 @@
-<img width="898" alt="Screenshot 2024-12-28 at 3 37 03 PM" src="https://github.com/user-attachments/assets/ecd2eae5-b117-4308-999f-dde55aa61a03" /># Kafka Write-Through Cache with Consumer Pool and Throughput Testing
+# Kafka Write-Through Cache with Consumer Pool and Throughput Testing
 
 This project implements a write-through cache system using Kafka, Redis, and MySQL. The architecture was designed to allow for high throughput while ensuring the data is immediately visible in MySQL, Redis, and metrics on the Confluent Dashboard.
 
