@@ -62,7 +62,7 @@ The project consists of the following key components:
 #### Producer, Consumer and Consumer Lag Metrics
 <img width="327" alt="Screenshot 2024-12-28 at 4 05 35 PM" src="https://github.com/user-attachments/assets/7a0509ac-9aa7-4bd3-96fc-9e4910243b07" />
 <img width="332" alt="Screenshot 2024-12-28 at 4 05 40 PM" src="https://github.com/user-attachments/assets/93ec8a1e-202c-4919-80bc-29ae5b893afb" />
-<img width="898" alt="Screenshot 2024-12-28 at 3 37 03 PM" src="https://github.com/user-attachments/assets/56ef2fec-4824-4482-9e8a-a24021672141" />
+<img width="338" alt="Screenshot 2024-12-28 at 3 37 03 PM" src="https://github.com/user-attachments/assets/56ef2fec-4824-4482-9e8a-a24021672141" />
 
 ### 5. Consumer Lag after 30 and 60 mins
 <img width="452" alt="Screenshot 2024-12-28 at 4 05 51 PM" src="https://github.com/user-attachments/assets/fb98590c-c22b-427c-a025-47fe82fde5ee" />
