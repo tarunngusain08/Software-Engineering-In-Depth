@@ -228,8 +228,8 @@ go run main.go
 You can monitor the system's performance and Kafka metrics on the **Confluent Dashboard**.
 
 ## Final State 
-<img width="205" alt="Screenshot 2024-12-28 at 4 33 50 PM" src="https://github.com/user-attachments/assets/f4734147-8d63-4b1c-8adc-31be6556f736" />
-<img width="458" alt="Screenshot 2024-12-28 at 4 34 01 PM" src="https://github.com/user-attachments/assets/d4382abb-9f5d-4830-aba8-35e682bd52b1" />
-<img width="356" alt="Screenshot 2024-12-28 at 4 34 16 PM" src="https://github.com/user-attachments/assets/677b484d-7b3c-453b-9d41-2b30cb584904" />
+<img width="305" alt="Screenshot 2024-12-28 at 4 33 50 PM" src="https://github.com/user-attachments/assets/f4734147-8d63-4b1c-8adc-31be6556f736" />
+<img width="558" alt="Screenshot 2024-12-28 at 4 34 01 PM" src="https://github.com/user-attachments/assets/d4382abb-9f5d-4830-aba8-35e682bd52b1" />
+<img width="656" alt="Screenshot 2024-12-28 at 4 34 16 PM" src="https://github.com/user-attachments/assets/677b484d-7b3c-453b-9d41-2b30cb584904" />
 
 
