@@ -101,20 +101,102 @@ confluent kafka topic create users
 
 #### Copy the api-key, secret key and bootstrap-servers and use them to intialize your kafka consumers and producers!
 
-### 2. Running the Producer and Consumer
-Run the following Go commands to start the producer and consumer:
+### 2. Running the Code
+Run the following Go commands to start the code!:
 
 ```bash
-go run producer.go  # Start the producer to send messages to Kafka
-go run consumer.go  # Start the consumer to process messages from Kafka
+git clone https://github.com/tarunngusain08/Software-Engineering-In-Depth
+cd Software-Engineering-In-Depth/Caching/WriteThrough/Kafka
+go run main.go
+```
+
+#### Use postman with sample curl - 
+```
+curl --location 'http://localhost:8080/write-through' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "John Doe",
+    "age": 34,
+    "occupation": "Engineer"
+}'
 ```
 
 ### 3. Running the Automation Script
 Run the automation script to send 10 requests/sec:
+Open a new terminal and create the file in different location!
+```
+vi main.go
+```
+
+```go
+package main
+
+import (
+        "bytes"
+        "encoding/json"
+        "fmt"
+        "math/rand"
+        "net/http"
+        "time"
+)
+
+func generateRandomData() map[string]interface{} {
+        names := []string{"John Doe", "Jane Smith", "Alice Brown", "Bob White", "Charlie Green"}
+        occupations := []string{"Engineer", "Doctor", "Teacher", "Artist", "Scientist"}
+
+        return map[string]interface{}{
+                "name":       names[rand.Intn(len(names))],
+                "age":        rand.Intn(60) + 18, // Random age between 18 and 77
+                "occupation": occupations[rand.Intn(len(occupations))],
+        }
+}
+
+func sendRequest() {
+        url := "http://localhost:8080/write-through"
+        data := generateRandomData()
+
+        // Marshal data to JSON
+        jsonData, err := json.Marshal(data)
+        if err != nil {
+                fmt.Printf("Error marshaling JSON: %v\n", err)
+                return
+        }
+
+        // Send the request
+        resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
+        if err != nil {
+                fmt.Printf("Error sending request: %v\n", err)
+                return
+        }
+        defer resp.Body.Close()
+
+        // Log the response status
+        fmt.Printf("Response status: %s\n", resp.Status)
+}
+
+func main() {
+        // Seed the random number generator
+        rand.Seed(time.Now().UnixNano())
+
+        // Create a ticker to send a request every 100ms (10 requests/sec)
+        ticker := time.NewTicker(100 * time.Millisecond)
+        defer ticker.Stop()
+
+        // Start sending requests
+        for {
+                select {
+                case <-ticker.C:
+                        sendRequest()
+                }
+        }
+}
+```
 
 ```bash
-go run send_requests.go  # This sends random data to the 'write-through' endpoint
+go run main.go
 ```
+
+#### Customize the ticker time as per your requirement!
 
 ### 4. Monitor Metrics on Confluent Dashboard
 You can monitor the system's performance and Kafka metrics on the **Confluent Dashboard**.
