@@ -215,7 +215,7 @@ You can monitor the system's performance and Kafka metrics on the **Confluent Da
 #### Producer, Consumer and Consumer Lag Metrics
 <img width="350" alt="Screenshot 2024-12-28 at 3 15 42 PM" src="https://github.com/user-attachments/assets/c83698e3-3aeb-493d-8157-3808d12b9dd1" />
 <img width="358" alt="Screenshot 2024-12-28 at 3 15 49 PM" src="https://github.com/user-attachments/assets/134112fb-0158-4dee-ac80-d9e8c7a9666b" />
-<img width="352" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
+<img width="302" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
 
 
 #### With 1 producer and consumer pool of 6 consumers
