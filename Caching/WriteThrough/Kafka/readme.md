@@ -201,9 +201,11 @@ go run main.go
 ### 4. Monitor Metrics on Confluent Dashboard
 You can monitor the system's performance and Kafka metrics on the **Confluent Dashboard**.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
+### 5. Screenshots 
 
-This `README.md` file provides a clear, detailed overview of your project, including the setup, testing scenarios, observations, and areas for future improvement. Let me know if you'd like to make any further adjustments!
+#### 1 producer and 1 consumer
+Producer -> <img width="890" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" />
+
+Consumer -> <img width="884" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
+
