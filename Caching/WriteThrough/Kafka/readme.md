@@ -204,9 +204,18 @@ You can monitor the system's performance and Kafka metrics on the **Confluent Da
 
 ### 5. Screenshots 
 
-#### With 1 producer and 1 consumer
+### With 1 producer and 1 consumer
 
+#### Producer and Consumer
 <img width="500" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" /> <img width="500" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
+
+#### DB and Redis
 <img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
 
+#### Producer, Consumer and Consumer Lag Metrics
+<img width="900" alt="Screenshot 2024-12-28 at 3 15 42 PM" src="https://github.com/user-attachments/assets/c83698e3-3aeb-493d-8157-3808d12b9dd1" />
+<img width="898" alt="Screenshot 2024-12-28 at 3 15 49 PM" src="https://github.com/user-attachments/assets/134112fb-0158-4dee-ac80-d9e8c7a9666b" />
+<img width="902" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
 
+
+#### With 1 producer and consumer pool of 6 consumers
