@@ -97,7 +97,9 @@ confluent kafka cluster use <cluster-id>
 confluent kafka topic create users
 ```
 
-Create a cluster in confluent dashboard if not done already
+#### Create a cluster in confluent dashboard if not done already!
+
+#### Copy the api-key, secret key and bootstrap-servers and use them to intialize your kafka consumers and producers!
 
 ### 2. Running the Producer and Consumer
 Run the following Go commands to start the producer and consumer:
