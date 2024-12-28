@@ -11,6 +11,12 @@ The project consists of the following key components:
 4. **Consumer Pool**: The consumer pool was implemented to increase throughput by scaling up the number of consumers processing messages from Kafka.
 5. **Testing Different Throughput Scenarios**: Various scenarios were tested by changing the producer throughput and scaling the number of consumers.
 
+#### Producer and Consumer
+<img width="500" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" /> <img width="500" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
+
+#### DB and Redis
+<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
+
 ## Key Steps and Performance Testing
 
 ### 1. Write-Through Cache with Producer and Consumer
@@ -19,12 +25,6 @@ The project consists of the following key components:
 - **Redis** was used for fast in-memory caching, and **MySQL** served as the persistent data store.
 - Upon sending a request via HTTP, the data was pushed to Kafka by the producer, and immediately processed and written to MySQL and Redis by the consumer.
 - The **Confluent Dashboard** showed real-time metrics, and the data was visible in MySQL and Redis immediately.
-
-#### Producer and Consumer
-<img width="500" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" /> <img width="500" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
-
-#### DB and Redis
-<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
 
 #### Producer, Consumer and Consumer Lag Metrics
 <img width="330" alt="Screenshot 2024-12-28 at 3 15 42 PM" src="https://github.com/user-attachments/assets/c83698e3-3aeb-493d-8157-3808d12b9dd1" />
@@ -47,9 +47,6 @@ The project consists of the following key components:
 - To test how the system would handle increased traffic, the producer throughput was raised to **1000 requests per second** while keeping the number of consumers at **6**.
 - This change caused a significant increase in lag, with the total lag growing to **150k messages**, and approximately **25k message lag per partition**.
 - The consumer pool was still struggling to keep up with the high message rate, and the lag continued to grow.
-
-#### DB and Redis
-<img width="374" alt="Screenshot 2024-12-28 at 3 04 05 PM" src="https://github.com/user-attachments/assets/04edb037-f20f-42cb-821d-52ef55114124" /> <img width="590" alt="Screenshot 2024-12-28 at 3 04 22 PM" src="https://github.com/user-attachments/assets/48222803-8224-4ecd-8ff6-1f26b57b2bbd" />
 
 #### Producer, Consumer and Consumer Lag Metrics
 <img width="323" alt="Screenshot 2024-12-28 at 3 26 34 PM" src="https://github.com/user-attachments/assets/49c0e178-775b-4348-8249-802f91f14cb5" />
