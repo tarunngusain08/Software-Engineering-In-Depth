@@ -205,7 +205,7 @@ You can monitor the system's performance and Kafka metrics on the **Confluent Da
 ### 5. Screenshots 
 
 #### 1 producer and 1 consumer
-Producer -> <img width="89" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" />
+Producer -> <img width="400" alt="Screenshot 2024-12-28 at 3 03 42 PM" src="https://github.com/user-attachments/assets/2c11e4dd-4be6-455e-b53d-a4b1579765c1" />
 
 Consumer -> <img width="884" alt="Screenshot 2024-12-28 at 3 03 50 PM" src="https://github.com/user-attachments/assets/4f93d354-9d12-4e3b-8665-c37cb35b5ec0" />
 
