@@ -141,4 +141,4 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 <img width="1512" alt="mysql" src="https://github.com/user-attachments/assets/88847666-effc-4c78-85c8-29524cd11bbd" />
 
 ### Data fetch from redis - 
-
+<img width="668" alt="Screenshot 2024-12-29 at 6 38 06 PM" src="https://github.com/user-attachments/assets/e719f7fe-b6b8-4417-b090-9bd38b87fe25" />
