@@ -1,4 +1,4 @@
-# Write-Through Cache using Goroutine
+# Read/Write-Through Cache using Goroutine
 
 This project demonstrates the implementation of a **Write-Through Cache** pattern using **Redis** as the cache and **MySQL** as the persistent storage. The application receives data via an HTTP endpoint and writes the data to both Redis and MySQL, ensuring that the cache is updated synchronously and the database is updated asynchronously.
 
@@ -110,6 +110,18 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
   }
   ```
 
+- **Request Body:**
+  
+  ```
+  curl --location 'http://localhost:8080/read-through' --header 'Content-Type: application/json' --data '{"name": "John Doe"}'
+  ```
+
+- **Response:**
+
+  ```
+  {Tarunn Gusain 25 SWE}
+  ```
+
 ## Screenshots
 
 ### Fail cases -
@@ -128,4 +140,5 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 <img width="576" alt="mysql success" src="https://github.com/user-attachments/assets/5a3a7bb2-7570-4f69-b4fb-e8436756abeb" />
 <img width="1512" alt="mysql" src="https://github.com/user-attachments/assets/88847666-effc-4c78-85c8-29524cd11bbd" />
 
+### Data fetch from redis - 
 
