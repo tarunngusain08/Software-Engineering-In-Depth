@@ -32,6 +32,7 @@ var (
 	consumerGroup  = "user-consumer-group"
 	topic          = "users"
 	workerPoolSize = 6
+
 )
 
 func init() {
