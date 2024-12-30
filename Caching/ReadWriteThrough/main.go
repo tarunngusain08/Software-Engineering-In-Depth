@@ -34,6 +34,7 @@ func init() {
 	if err != nil {
 		log.Fatalf("Failed to connect to MySQL: %v", err)
 	}
+	log.Println("Mysql and Redis client init!")
 }
 
 func main() {
