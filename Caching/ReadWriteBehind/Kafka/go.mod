@@ -1,4 +1,4 @@
-module WriteThroughUsingKafka
+module ReadWriteBehindUsingKafka
 
 go 1.23.4
 
