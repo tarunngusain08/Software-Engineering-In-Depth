@@ -143,7 +143,7 @@ func writeThroughHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Write synchronously to MySQL
-	err := writeToDatabase(data)
+	err = writeToDatabase(data)
 	if err != nil {
 		log.Printf("MySQL write error: %v", err)
 		fmt.Println("MySQL write error")
