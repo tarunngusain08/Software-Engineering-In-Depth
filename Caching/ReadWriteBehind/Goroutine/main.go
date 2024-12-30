@@ -37,8 +37,8 @@ func init() {
 }
 
 func main() {
-	http.HandleFunc("/write-through", writeBehindHandler)
-	http.HandleFunc("/read-through", readBehindHandler)
+	http.HandleFunc("/write-behind", writeBehindHandler)
+	http.HandleFunc("/read-behind", readBehindHandler)
 	log.Println("Server started at :8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
@@ -112,8 +112,6 @@ func readFromDatabase(name string) (*requestData, error) {
 	return &user, nil
 }
 
-
-// Handler for the /write-through endpoint
 func writeBehindHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)

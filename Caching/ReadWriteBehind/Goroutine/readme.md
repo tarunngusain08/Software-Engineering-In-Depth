@@ -1,10 +1,10 @@
-# Write-Through Cache using Goroutine
+# Write-behind Cache using Goroutine
 
-This project demonstrates the implementation of a **Write-Through Cache** pattern using **Redis** as the cache and **MySQL** as the persistent storage. The application receives data via an HTTP endpoint and writes the data to both Redis and MySQL, ensuring that the cache is updated synchronously and the database is updated asynchronously.
+This project demonstrates the implementation of a **Write-behind Cache** pattern using **Redis** as the cache and **MySQL** as the persistent storage. The application receives data via an HTTP endpoint and writes the data to both Redis and MySQL, ensuring that the cache is updated synchronously and the database is updated asynchronously.
 
 ## Features
 
-- **Write-Through Cache**: Data is written to the cache immediately upon receiving a request.
+- **Write-behind Cache**: Data is written to the cache immediately upon receiving a request.
 - **Asynchronous Database Write**: After updating the cache, the data is asynchronously written to the MySQL database.
 - **Redis Cache**: Utilizes Redis to store and retrieve data quickly.
 - **MySQL Database**: Stores data persistently and retrieves it asynchronously when needed.
@@ -30,8 +30,9 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/tarunngusain08/WriteThrough.git
-   cd WriteThrough
+   git clone https://github.com/tarunngusain08/Software-Engineering-In-Depth
+   cd Software-Engineering-In-Depth/Caching/ReadWriteBehind/Kafka
+   go run main.go
    ```
 
 2. **Start Redis and MySQL containers using Docker:**
@@ -76,12 +77,12 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 
 6. **Testing the API:**
 
-   You can now send a POST request to the `/write-through` endpoint to store data.
+   You can now send a POST request to the `/write-behind` endpoint to store data.
 
    Example request:
 
    ```bash
-   curl -X POST http://localhost:8080/write-through \
+   curl -X POST http://localhost:8080/write-behind \
      -H "Content-Type: application/json" \
      -d '{"name": "John Doe", "age": 30, "occupation": "Engineer"}'
    ```
@@ -90,7 +91,7 @@ This project demonstrates the implementation of a **Write-Through Cache** patter
 
 ## API Endpoint
 
-### `POST /write-through`
+### `POST /write-behind`
 
 - **Request Body:**
 

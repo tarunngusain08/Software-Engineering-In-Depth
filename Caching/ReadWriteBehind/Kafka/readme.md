@@ -1,11 +1,11 @@
-# Kafka Write-Through Cache with Consumer Pool and Throughput Testing
+# Kafka Write-behind Cache with Consumer Pool and Throughput Testing
 
-This project implements a write-through cache system using Kafka, Redis, and MySQL. The architecture was designed to allow for high throughput while ensuring the data is immediately visible in MySQL, Redis, and metrics on the Confluent Dashboard.
+This project implements a write-behind cache system using Kafka, Redis, and MySQL. The architecture was designed to allow for high throughput while ensuring the data is immediately visible in MySQL, Redis, and metrics on the Confluent Dashboard.
 
 ## Project Overview
 
 The project consists of the following key components:
-1. **Write-Through Cache**: The system uses Kafka as a messaging layer to buffer requests before writing them to MySQL and Redis.
+1. **Write-behind Cache**: The system uses Kafka as a messaging layer to buffer requests before writing them to MySQL and Redis.
 2. **Producer and Consumer**: A producer sends data to Kafka, and a consumer processes this data and writes it to MySQL and Redis.
 3. **Automation Script**: An automation script was created to generate a load of 10 requests per second to simulate real-world traffic.
 4. **Consumer Pool**: The consumer pool was implemented to increase throughput by scaling up the number of consumers processing messages from Kafka.
@@ -19,8 +19,8 @@ The project consists of the following key components:
 
 ## Key Steps and Performance Testing
 
-### 1. Write-Through Cache with Producer and Consumer
-- The system was designed using Kafka, Redis, and MySQL to implement a write-through cache.
+### 1. Write-behind Cache with Producer and Consumer
+- The system was designed using Kafka, Redis, and MySQL to implement a write-behind cache.
 - **Kafka** was used to buffer data between the producer and consumer.
 - **Redis** was used for fast in-memory caching, and **MySQL** served as the persistent data store.
 - Upon sending a request via HTTP, the data was pushed to Kafka by the producer, and immediately processed and written to MySQL and Redis by the consumer.
@@ -32,7 +32,7 @@ The project consists of the following key components:
 <img width="330" alt="Screenshot 2024-12-28 at 3 16 13 PM" src="https://github.com/user-attachments/assets/32f9bae6-afdb-49f5-9656-ad040ccab812" />
 
 ### 2. Automation Script to Send 10 Requests/Second
-- An automation script was written to simulate traffic by sending 10 requests per second to the `write-through` endpoint.
+- An automation script was written to simulate traffic by sending 10 requests per second to the `write-behind` endpoint.
 - The requests were sent using randomly generated data, and each request was directed to the Kafka topic.
 - This scenario was run for 4-5 minutes with only **1 consumer**.
 - The topic had **6 partitions**, and the consumer was able to process the incoming data at a reasonable rate.
@@ -132,13 +132,13 @@ Run the following Go commands to start the code!:
 
 ```bash
 git clone https://github.com/tarunngusain08/Software-Engineering-In-Depth
-cd Software-Engineering-In-Depth/Caching/WriteThrough/Kafka
+cd Software-Engineering-In-Depth/Caching/ReadWriteBehind/Kafka
 go run main.go
 ```
 
 #### Use postman with sample curl - 
 ```
-curl --location 'http://localhost:8080/write-through' \
+curl --location 'http://localhost:8080/write-behind' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "John Doe",
@@ -178,7 +178,7 @@ func generateRandomData() map[string]interface{} {
 }
 
 func sendRequest() {
-        url := "http://localhost:8080/write-through"
+        url := "http://localhost:8080/write-behind"
         data := generateRandomData()
 
         // Marshal data to JSON

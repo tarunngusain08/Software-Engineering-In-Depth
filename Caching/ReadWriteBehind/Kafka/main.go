@@ -102,7 +102,7 @@ func main() {
 	// Start the worker pool for consuming Kafka messages
 	go startConsumerWorkers()
 
-	http.HandleFunc("/write-through", writeBehindHandler)
+	http.HandleFunc("/write-behind", writeBehindHandler)
 	// Start the HTTP server in a goroutine
 	go func() {
 		log.Println("Server started at :8080")
@@ -119,7 +119,6 @@ func main() {
 	shutdown()
 }
 
-// Handler for the /write-through endpoint
 func writeBehindHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
