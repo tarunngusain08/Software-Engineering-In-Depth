@@ -31,7 +31,7 @@ func init() {
 
 	// Initialize MySQL connection
 	var err error
-	db, err = sql.Open("mysql", "user:password@tcp(localhost:3306)/your_database")
+	db, err = sql.Open("mysql", "root:1234@tcp(localhost:3306)/users")
 	if err != nil {
 		log.Fatalf("Failed to connect to MySQL: %v", err)
 	}
