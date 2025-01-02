@@ -26,12 +26,14 @@ var db *sql.DB
 func init() {
 	// Initialize Redis client
 	cache = redis.NewClient(&redis.Options{
-		Addr: "localhost:6379", // Update with your Redis address
+		// Addr: "localhost:6379", // Update with your Redis address
+		Addr: "redis_service:6379",
 	})
 
 	// Initialize MySQL connection
 	var err error
-	db, err = sql.Open("mysql", "root:1234@tcp(localhost:3306)/users")
+	// db, err = sql.Open("mysql", "root:1234@tcp(localhost:3306)/users")
+	db, err = sql.Open("mysql", "root:1234@tcp(mysql_service:3306)/users")
 	if err != nil {
 		log.Fatalf("Failed to connect to MySQL: %v", err)
 	}
@@ -41,7 +43,7 @@ func init() {
 func main() {
 	http.HandleFunc("/read-cache-aside", cacheAsideReadHandler)
 	http.HandleFunc("/write-cache-aside", cacheAsideWriteHandler)
-	log.Println("Server started at :8080")
+	log.Println("Server started at :8081")
 	err := http.ListenAndServe(":8081", nil)
 	if err != nil {
 		log.Fatalf("Server failed to start: %v", err)
