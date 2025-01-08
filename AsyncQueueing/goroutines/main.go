@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	dataChannel := make(chan int)
+	dataChannel := make(chan int, 10)
 	var wg sync.WaitGroup
 	wg.Add(2)
 	go producer(dataChannel, &wg)
