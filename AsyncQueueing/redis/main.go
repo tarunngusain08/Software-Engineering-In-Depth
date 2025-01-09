@@ -17,9 +17,8 @@ const (
 )
 
 func main() {
-	// Redis client
 	rdb := redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr: "redis_service:6379",
 	})
 	defer rdb.Close()
 
@@ -33,7 +32,6 @@ func main() {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	// Start producer and consumer
 	go producer(ctx, rdb, &wg)
 	go consumer(ctx, rdb, &wg)
 
@@ -69,13 +67,12 @@ func consumer(ctx context.Context, rdb *redis.Client, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	for {
-		// Read messages from the stream
 		messages, err := rdb.XReadGroup(ctx, &redis.XReadGroupArgs{
 			Group:    groupName,
 			Consumer: consumerID,
 			Streams:  []string{streamName, ">"},
 			Count:    10,
-			Block:    0, // Wait indefinitely for new messages
+			Block:    0,
 		}).Result()
 
 		if err != nil {
@@ -85,18 +82,15 @@ func consumer(ctx context.Context, rdb *redis.Client, wg *sync.WaitGroup) {
 
 		for _, stream := range messages {
 			for _, message := range stream.Messages {
-				// Process the message
 				val := message.Values["value"].(string)
 				intVal, _ := strconv.Atoi(val)
 				fmt.Println(intVal)
 
-				// Acknowledge the message
 				_, err := rdb.XAck(ctx, streamName, groupName, message.ID).Result()
 				if err != nil {
 					log.Printf("Failed to acknowledge message: %v", err)
 				}
 
-				// Exit condition (optional, for this example)
 				if intVal == 9 {
 					log.Println("Consumer finished processing messages")
 					return
