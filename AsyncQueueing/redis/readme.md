@@ -162,6 +162,3 @@ services:
   
 - **Health check failures**:
   Check the Redis logs for any startup issues, and ensure Redis is starting correctly.
-
-
-This README covers the project setup, configuration, and logic in detail, along with troubleshooting tips. Let me know if you'd like to add anything else!
