@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_service
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: users
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+  redis:
+    image: redis:7.0
+    container_name: redis_service
+    ports:
+      - "6379:6379"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go_app
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: 1234
+      DB_NAME: users
+      REDIS_HOST: redis
+    depends_on:
+      - mysql
+      - redis
+
+volumes:
+  mysql_data:
