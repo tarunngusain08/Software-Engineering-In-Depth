@@ -138,7 +138,7 @@ func main() {
 		setMetrics.TotalRequests, setMetrics.Successful, setMetrics.Failed, setMetrics.AverageLatency(), setMetrics.MinLatency, setMetrics.MaxLatency)
 
 	fmt.Println("Starting GET operations...")
-	performGetOperations(keys, 700, 10*time.Second, getMetrics)
+	performGetOperations(keys, 1000, 10*time.Second, getMetrics)
 	fmt.Println("Completed GET operations.")
 	fmt.Printf("GET Metrics: Total Requests: %d, Successful: %d, Failed: %d, Average Latency: %v, Min Latency: %v, Max Latency: %v\n",
 		getMetrics.TotalRequests, getMetrics.Successful, getMetrics.Failed, getMetrics.AverageLatency(), getMetrics.MinLatency, getMetrics.MaxLatency)
