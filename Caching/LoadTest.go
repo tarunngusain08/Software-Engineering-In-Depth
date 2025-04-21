@@ -132,13 +132,13 @@ func main() {
 	getMetrics := &Metrics{}
 
 	fmt.Println("Starting SET operations...")
-	performSetOperations(keyValues, 1200, 10*time.Second, setMetrics)
+	performSetOperations(keyValues, 1500, 10*time.Second, setMetrics)
 	fmt.Println("Completed SET operations.")
 	fmt.Printf("SET Metrics: Total Requests: %d, Successful: %d, Failed: %d, Average Latency: %v, Min Latency: %v, Max Latency: %v\n",
 		setMetrics.TotalRequests, setMetrics.Successful, setMetrics.Failed, setMetrics.AverageLatency(), setMetrics.MinLatency, setMetrics.MaxLatency)
 
 	fmt.Println("Starting GET operations...")
-	performGetOperations(keys, 1000, 10*time.Second, getMetrics)
+	performGetOperations(keys, 1500, 10*time.Second, getMetrics)
 	fmt.Println("Completed GET operations.")
 	fmt.Printf("GET Metrics: Total Requests: %d, Successful: %d, Failed: %d, Average Latency: %v, Min Latency: %v, Max Latency: %v\n",
 		getMetrics.TotalRequests, getMetrics.Successful, getMetrics.Failed, getMetrics.AverageLatency(), getMetrics.MinLatency, getMetrics.MaxLatency)
