@@ -2,6 +2,9 @@
 
 This project demonstrates how to use an eBPF program written in Go to monitor active network connections, displaying their PIDs, ports, and other relevant information. Since macOS does not natively support eBPF, we use Lima to create a Linux VM for running the program.
 
+<img width="735" alt="Screenshot 2025-04-26 at 5 32 19 PM" src="https://github.com/user-attachments/assets/62846b13-8567-429c-b93d-91b5625eb6e8" />
+<img width="717" alt="Screenshot 2025-04-26 at 5 36 50 PM" src="https://github.com/user-attachments/assets/52ee8da9-f1f7-4bed-8961-eb610377f987" />
+
 ---
 
 ## Prerequisites
