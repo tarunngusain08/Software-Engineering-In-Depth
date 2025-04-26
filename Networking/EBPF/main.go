@@ -1,90 +1,50 @@
-package ebpf
+package main
 
 import (
-	"bytes"
-	"encoding/binary"
 	"fmt"
 	"log"
-	"net"
 	"os"
-	"os/signal"
-	"syscall"
-
-	"github.com/cilium/ebpf"
-	"github.com/cilium/ebpf/perf"
+	"os/exec"
 )
 
 func main() {
-	// Load the compiled eBPF program from the .o file
-	spec, err := ebpf.LoadCollectionSpec("monitor_incoming.o")
+	// Check if bpftrace is installed
+	_, err := exec.LookPath("bpftrace")
 	if err != nil {
-		log.Fatalf("Failed to load eBPF collection spec: %v", err)
+		log.Fatalf("bpftrace is not installed. Please install it using your package manager.")
 	}
 
-	// Load the program into the kernel
-	coll, err := ebpf.NewCollection(spec)
+	// Define the eBPF program
+	bpfProgram := `
+	tracepoint:syscalls:sys_enter_connect {
+		// Extract the sockaddr structure from args->uservaddr
+		// For IPv4, the port is stored in the second 2 bytes of the sockaddr_in structure
+		$addr = args->uservaddr;
+		$port = (uint16)(*(uint16 *)($addr + 2));
+		printf("PID: %d, Comm: %s, Port: %d\n", pid, comm, $port);
+	}
+	`
+
+	// Write the program to a temporary file
+	tmpFile, err := os.CreateTemp("", "ebpf-program-*.bt")
 	if err != nil {
-		log.Fatalf("Failed to create eBPF collection: %v", err)
+		log.Fatalf("Failed to create temporary file: %v", err)
 	}
-	defer coll.Close()
+	defer os.Remove(tmpFile.Name())
 
-	prog := coll.Programs["monitor_incoming"]
-	if prog == nil {
-		log.Fatalf("Program 'monitor_incoming' not found in the collection")
-	}
-	defer prog.Close()
-
-	// Get the events map
-	eventsMap, ok := coll.Maps["events"]
-	if !ok {
-		log.Fatalf("Map 'events' not found in the collection")
-	}
-
-	// Debug: Ensure eventsMap is not nil
-	if eventsMap == nil {
-		log.Fatalf("eventsMap is nil")
-	}
-
-	// // Create a perf buffer to receive events
-	reader, err := perf.NewReader(eventsMap, 64) // 64 pages for the buffer
+	_, err = tmpFile.WriteString(bpfProgram)
 	if err != nil {
-		log.Fatalf("Failed to create perf reader: %v", err)
+		log.Fatalf("Failed to write eBPF program to file: %v", err)
 	}
-	defer reader.Close()
+	tmpFile.Close()
 
-	go func() {
-		for {
-			record, err := reader.Read()
-			if err != nil {
-				log.Printf("Failed to read from perf buffer: %v", err)
-				continue
-			}
+	// Run the eBPF program using bpftrace
+	cmd := exec.Command("bpftrace", tmpFile.Name())
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 
-			var conn struct {
-				PID   uint32
-				SAddr uint32
-				DAddr uint32
-				SPort uint16
-				DPort uint16
-			}
-			if err := binary.Read(bytes.NewReader(record.RawSample), binary.LittleEndian, &conn); err != nil {
-				log.Printf("Failed to decode perf event: %v", err)
-				continue
-			}
-
-			fmt.Printf("PID: %d, Source: %s:%d, Destination: %s:%d\n",
-				conn.PID,
-				intToIP(conn.SAddr), conn.SPort,
-				intToIP(conn.DAddr), conn.DPort)
-		}
-	}()
-
-	// Handle termination signals
-	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
-	<-sig
-}
-
-func intToIP(ip uint32) net.IP {
-	return net.IPv4(byte(ip>>24), byte(ip>>16), byte(ip>>8), byte(ip))
+	fmt.Println("Running eBPF program to monitor active connections...")
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("Failed to run eBPF program: %v", err)
+	}
 }
